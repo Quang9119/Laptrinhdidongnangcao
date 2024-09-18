@@ -32,7 +32,24 @@ declare interface MapProps {
   selectedDriver?: number | null;
   onMapReady?: () => void;
 }
+declare interface FoodProps {
+  id: string;
+  name: string;
+  description: string;
+  price: string;
+  foodCategory: {
+    id: string;
+    name: string;
+  };
+  images: string[];
+  available: string; // Assuming this is a string representation of a boolean
+  ingredients: string[]; // Assuming this is a JSON string for an array
+  creationDate: string;
+  seasonal: string; // Assuming this is a string representation of a boolean
+  vegetarian: string; // Assuming this is a string representation of a boolean
+}
 declare interface RestaurantProps {
+  id: string;
   name: string;
   description: string;
   cuisineType: string;

@@ -33,6 +33,7 @@ import onWelcome2 from "@/assets/images/onWelcome2.png";
 import onWelcome3 from "@/assets/images/onWelcome3.png";
 import signUpFood from "@/assets/images/signup-food.png";
 import restaurant from "@/assets/icons/restaurant.png";
+import add from "@/assets/icons/add.png";
 
 export const images = {
   onWelcome1,
@@ -45,6 +46,7 @@ export const images = {
   message,
 };
 export const icons = {
+  add,
   arrowDown,
   arrowUp,
   backArrow,
