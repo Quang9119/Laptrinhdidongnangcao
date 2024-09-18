@@ -1,48 +1,44 @@
-import React, { useEffect } from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import { useRouter } from 'expo-router';
-import SignInScreen from './(tabs)/signin'; // Adjust the path as needed
-import HomeScreen from './(authed)/home';
-import NotFoundScreen from "@/app/+not-found";
-import Home from "./(authed)/home"; // Adjust the path as needed
+import {
+  DarkTheme,
+  DefaultTheme,
+  NavigationContainer,
+} from "@react-navigation/native";
+import { useFonts } from "expo-font";
+import React, { useEffect, useState } from "react";
+import * as SplashScreen from "expo-splash-screen";
 
-const Stack = createStackNavigator();
+import { Navigator, Stack } from "expo-router";
 
-function AppNavigator({ isAuthenticated }: { isAuthenticated: boolean }) {
-  const router = useRouter();
+SplashScreen.preventAutoHideAsync();
+
+export default function RootLayout() {
+  const [loaded] = useFonts({
+    "Jakarta-Bold": require("../assets/fonts/PlusJakartaSans-Bold.ttf"),
+    "Jakarta-ExtraBold": require("../assets/fonts/PlusJakartaSans-ExtraBold.ttf"),
+    "Jakarta-ExtraLight": require("../assets/fonts/PlusJakartaSans-ExtraLight.ttf"),
+    "Jakarta-Light": require("../assets/fonts/PlusJakartaSans-Light.ttf"),
+    "Jakarta-Medium": require("../assets/fonts/PlusJakartaSans-Medium.ttf"),
+    "Jakarta-Regular": require("../assets/fonts/PlusJakartaSans-Regular.ttf"),
+    "Jakarta-SemiBold": require("../assets/fonts/PlusJakartaSans-SemiBold.ttf"),
+  });
 
   useEffect(() => {
-    console.log("Is Authenticated:", isAuthenticated);
-  }, [isAuthenticated]);
+    if (loaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded]);
+
+  if (!loaded) {
+    return null;
+  }
 
   return (
-      <Stack.Navigator>
-        {isAuthenticated ? (
-            <>
-              <Stack.Screen
-                  name="(tabs)"
-                  component={Home}
-                  options={{ headerShown: false }}
-              />
-              {console.log("Rendering HomeScreen")}
-            </>
-        ) : (
-            <>
-              <Stack.Screen
-                  name="(authed)"
-                  component={SignInScreen}
-                  options={{ headerShown: false }}
-              />
-              {console.log("Rendering SignInScreen")}
-            </>
-        )}
-        <Stack.Screen
-            name="+not-found"
-            component={NotFoundScreen} // Ensure this is defined or imported
-            options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
+    <Stack>
+      <Stack.Screen name={"index"} options={{ headerShown: false }} />
+      <Stack.Screen name={"(root)"} options={{ headerShown: false }} />
+      <Stack.Screen name={"(auth)"} options={{ headerShown: false }} />
+
+      <Stack.Screen name={"+not-found"} />
+    </Stack>
   );
 }
-
-export default AppNavigator;

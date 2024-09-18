@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Week02-fix",
-    "slug": "Week02-fix",
+    "name": "Week03-fix",
+    "slug": "Week03-fix",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -9,7 +9,7 @@
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",
-      "resizeMode": "contain",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "ios": {
