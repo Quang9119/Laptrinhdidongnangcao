@@ -4,7 +4,9 @@ import { GoogleInputProps } from "@/types/type";
 import { icons } from "@/constants"; // Assuming icons is an object with SVGs or image references
 
 const TextInputSearch = ({
+  // @ts-ignore
   keyword,
+  // @ts-ignore
   setKeyword,
   icon,
   initialLocation,

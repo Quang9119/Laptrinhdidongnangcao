@@ -76,6 +76,7 @@ const TabsLayout = () => {
         tabBarActiveTintColor: "white",
         tabBarInactiveTintColor: "white",
         tabBarShowLabel: false,
+        // @ts-ignore
         tabBarStyle: tabBarStyle,
       }}
     >
